@@ -1,4 +1,17 @@
-- name: Install the latest version of Apache
-  yum:
-    name: httpd
-    state: latest
+---
+- hosts: all
+  tasks:
+  - name: 01 yum update 
+    yum: name=* state=latest
+    become: yes
+
+  - name: 02 php install
+    shell: amazon-linux-extras enable php7.2
+    become: yes
+
+  - name: 03 yum install
+    become: true
+    yum:
+      state: present
+      name:
+        - httpd 
