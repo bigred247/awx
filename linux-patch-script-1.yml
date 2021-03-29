@@ -10,7 +10,7 @@
     shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /tmp/yum-Installed-pre.txt
 
   - name: Set variable to number of installed packages and available updates
-    command: "{{ item }}"
+    shell: "{{ item }}"
     with_items: 
       - export pre_pkg_inst=$(yum list installed | grep '^[a-Z0-9]' | wc -l)
       - export pre_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
