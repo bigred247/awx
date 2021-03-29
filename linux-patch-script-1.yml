@@ -24,9 +24,9 @@
     register: yumoutput
 
   - name: copy the output to a local file
-    copy:
-      dest: "/tmp/yum-update.txt"
-      content: "{{ yumoutput.stdout }}"
+      copy:
+        dest: "/tmp/yum-update.txt"
+        content: "{{ yumoutput.stdout }}"
 
   - name: Reboot machine after update
     reboot:
