@@ -20,7 +20,7 @@
     yum:
       name: '*'
       state: latest
-    register: yum-update-output
+      register: yum-update-output
 
   - name: copy the output to a local file
     copy:
