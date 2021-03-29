@@ -27,8 +27,3 @@
     debug:
       msg: "{{ yumoutput.stdout }}
       dest: /tmp/yum-update.txt
-
-  - name: Reboot machine after update
-    reboot:
-      post_reboot_delay: 30
-      reboot_timeout: 600
