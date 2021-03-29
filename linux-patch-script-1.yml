@@ -23,8 +23,7 @@
       state: latest
     register: yumoutput
 
-  - name: copy the output to a local file
-    copy:
+  - copy:
       content: "{{ yumoutput.stdout }}"
       dest: "/tmp/yum-update.txt"
 
