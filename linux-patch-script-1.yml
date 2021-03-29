@@ -20,11 +20,11 @@
     yum:
       name: '*'
       state: latest
-      register: yum-update-output
+      register: yumoutput
 
   - name: copy the output to a local file
     copy:
-      content: "{{ yum-update-output.stdout }}"
+      content: "{{ yumoutput.stdout }}"
       dest: "/tmp/yum-update.txt"
 
   - name: Reboot machine after update
