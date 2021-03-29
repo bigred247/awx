@@ -30,6 +30,5 @@
 
   - name: Reboot machine after update
     reboot:
-      msg: Reboot initiated by Ansible - After Patching
       post_reboot_delay: 30
       reboot_timeout: 600
