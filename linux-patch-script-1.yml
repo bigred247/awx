@@ -1,0 +1,34 @@
+---
+- hosts: all
+  tasks:
+  - name: yum-clean-metadata
+    command: yum clean metadata
+    args:
+      warn: no
+
+  - name: Old CF output file for same of handover
+    command: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /tmp/yum-Installed-pre.txt
+
+  - name: Set variable to number of installed packages and available updates
+    command: "{{ item }}"
+    with_items: 
+      - export pre_pkg_inst=$(yum list installed | grep '^[a-Z0-9]' | wc -l)
+      - export pre_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
+      - echo -n "${HOSTNAME};${pre_pkg_inst};${pre_pkg_avail};" > /tmp/$HOSTNAME-yum-install.txt
+
+  - name: Run yum update and output details
+    yum:
+      name: '*'
+      state: latest
+    register: yum-update-output
+
+  - name: copy the output to a local file
+    copy:
+      content: "{{ yum-update-output.stdout }}"
+      dest: "/tmp/yum-update.txt"
+
+  - name: Reboot machine after update
+    reboot:
+      msg: "Reboot initiated by Ansible - After Patching"
+      post_reboot_delay: 30
+      reboot_timeout: 600
