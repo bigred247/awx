@@ -4,13 +4,14 @@
   tasks:
   
   - name: Install all required dependencies
-    apt: name={{ item }} state=present
-    with_items:
+    apt: 
+      name:
         - python3.6 
         - python-boto
         - python-boto3
         - python3-botocore
-
+    state: present
+    
   - name: 01 - Download Metricbeats file locally
     aws_s3:
       bucket: mtc-temp-0001
