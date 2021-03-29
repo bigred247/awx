@@ -26,7 +26,7 @@
   - name: copy the output to a local file
     debug:
       msg: "{{ yumoutput.stdout }}
-      dest: "/tmp/yum-update.txt"
+      dest: /tmp/yum-update.txt
 
   - name: Reboot machine after update
     reboot:
