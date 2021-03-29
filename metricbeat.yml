@@ -6,7 +6,6 @@
   - name: Install all required dependencies
     apt: 
       name:
-        - python-apt
         - python3.6 
         - python-boto
         - python-boto3
