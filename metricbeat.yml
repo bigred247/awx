@@ -3,6 +3,14 @@
   become: yes
   tasks:
   
+  - name: Install all required dependencies
+    apt: name={{ item }} state=installed
+    with_items:
+        - python3.6 
+        - boto
+        - boto3
+        - botocore
+
   - name: 01 - Download Metricbeats file locally
     aws_s3:
       bucket: mtc-temp-0001
