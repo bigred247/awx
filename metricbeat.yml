@@ -6,11 +6,11 @@
   - name: Install all required dependencies
     apt: 
       name:
-        - python3.6 
+        - python 
         - python-boto
         - python-boto3
         - python3-botocore
-      state: present
+      state: latest
     
   - name: 01 - Download Metricbeats file locally
     aws_s3:
