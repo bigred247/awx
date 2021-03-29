@@ -7,7 +7,7 @@
       warn: no
 
   - name: Old CF output file for same of handover
-    command: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /tmp/yum-Installed-pre.txt
+    shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /tmp/yum-Installed-pre.txt
 
   - name: Set variable to number of installed packages and available updates
     command: "{{ item }}"
