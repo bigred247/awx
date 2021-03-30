@@ -13,7 +13,7 @@
   - name: 01 - Download Metricbeats file locally.
     shell: aws s3 cp s3://mtc-temp-0001/test/metricbeat.sh metricbeat.sh
     args:
-      chdir: tmp/
+      chdir: /tmp
     
 #  - name: 01 - Download Metricbeats file locally
 #    aws_s3:
