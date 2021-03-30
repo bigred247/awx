@@ -2,5 +2,5 @@
 - hosts: all
   become: yes
   tasks:
-  - include: patching/tasks/script-1.yml
-  - include: patching/tasks/script-2.yml
+  - include: patching/tasks/script_1.yml
+  - include: patching/tasks/script_2.yml
