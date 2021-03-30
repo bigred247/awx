@@ -3,13 +3,14 @@
   become: yes
   tasks:
   
-  - file:
+  - name: 01 - Clear default repos added after kernel update and clear cache repo data
+    file:
       path: "{{ item }}"
       state: absent
-      with_items: 
-        - rm /etc/yum.repos.d/amzn-*.repo
-        - rm /etc/yum.repos.d/epel.repo.rpmnew
-        - rm /etc/yum.repos.d/epel-testing.repo
+    with_items: 
+      - rm /etc/yum.repos.d/amzn-*.repo
+      - rm /etc/yum.repos.d/epel.repo.rpmnew
+      - rm /etc/yum.repos.d/epel-testing.repo
 
   - name: 02 - yum-clean-metadata
     command: yum clean metadata
