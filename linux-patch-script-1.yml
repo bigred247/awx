@@ -22,6 +22,10 @@
       name: '*'
       state: latest
     register: yumoutput
+    
+  - name: Show registered var contents and structure
+    debug:
+      var: yumoutput
 
   - name: copy the output to a local file
     copy:
