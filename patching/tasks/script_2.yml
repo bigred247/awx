@@ -1,4 +1,4 @@
-  - name: 01 - Clear default repos added after kernel update and clear cache repo data
+  - name: 08 - Clear default repos added after kernel update and clear cache repo data
     file:
       path: "{{ item }}"
       state: absent
@@ -7,34 +7,34 @@
       - rm /etc/yum.repos.d/epel.repo.rpmnew
       - rm /etc/yum.repos.d/epel-testing.repo
 
-  - name: 02 - yum-clean-metadata
+  - name: 09 - yum-clean-metadata
     command: yum clean metadata
     args:
       warn: no
 
-  - name: 03 - Post Yum check
+  - name: 10 - Post Yum check
     shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /tmp/yum-Installed-post.txt
 
-  - name: 04 Set variable to number of installed packages and available updates
+  - name: 11 Set variable to number of installed packages and available updates
     shell: "{{ item }}"
     with_items:
       - export post_pkg_inst=$(yum list installed | grep '^[a-Z0-9]' | wc -l)
       - export post_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
 
-  - name: 05 - Output to new file type
+  - name: 12 - Output to new file type
     shell: echo -n "${post_pkg_inst};${post_pkg_avail}" >> /tmp/$HOSTNAME-yum-install.txt
 
-  - name: 06 - Confirm no updates outstanding
+  - name: 13 - Confirm no updates outstanding
     yum:
       name: '*'
       state: latest
     register: postyumoutput
 
-  - name: 07 - Show registered var contents and structure
+  - name: 14 - Show registered var contents and structure
     debug:
       var: postyumoutput
 
-  - name: 08 - Copy the output to a local file
+  - name: 15 - Copy the output to a local file
     copy:
       content: "{{ postyumoutput | to_nice_yaml(indent=2) }}"
       dest: "/tmp/post-yum-update.txt"
