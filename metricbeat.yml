@@ -6,8 +6,6 @@
   - name: Install all required dependencies
     yum: 
       name:
-        - python 
-        - python-boto
         - python-boto3
         - python3-botocore
       state: latest
