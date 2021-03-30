@@ -7,7 +7,7 @@
         ansible_python_interpreter: /usr/bin/python3
    
     - name: 01 - Download Metricbeats file locally
-      aws_s3:
+      amazon.aws.aws_s3:
         bucket: mtc-temp-0001
         object: /test/metricbeat.sh
         dest: /tmp/metricbeat.sh
