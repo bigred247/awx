@@ -4,6 +4,8 @@
       - rm /etc/yum.repos.d/amzn-*.repo
       - rm /etc/yum.repos.d/epel.repo.rpmnew
       - rm /etc/yum.repos.d/epel-testing.repo
+    args:
+      warn: no
 
   - name: 02 - yum-clean-metadata
     command: yum clean metadata
