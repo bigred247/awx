@@ -1,0 +1,7 @@
+- 
+  name: Linux monthly patching 
+  hosts: all
+  become: yes
+  tasks:
+  - include: patching/script_1.yml
+  - include: patching/script_2.yml
