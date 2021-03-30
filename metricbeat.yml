@@ -2,27 +2,26 @@
 - hosts: all
   become: yes
   tasks:
-
-  - name: Setting host facts for Python interpreter
-    set_fact: 
-       ansible_python_interpreter: /usr/bin/python3
+    - name: Setting host facts for Python interpreter
+      set_fact: 
+        ansible_python_interpreter: /usr/bin/python3
    
-  - name: 01 - Download Metricbeats file locally
-    amazon.aws.aws_s3:
-      bucket: mtc-temp-0001
-      object: /test/metricbeat.sh
-      dest: /tmp/metricbeat.sh
-      mode: get
+    - name: 01 - Download Metricbeats file locally
+      amazon.aws.aws_s3:
+        bucket: mtc-temp-0001
+        object: /test/metricbeat.sh
+        dest: /tmp/metricbeat.sh
+        mode: get
 
-  - name: 02 - Change the file permissions of the shell scrip to allow for execute
-    file: 
-      path: /tmp/metricbeat.sh
-      mode: "u=x"
+    - name: 02 - Change the file permissions of the shell scrip to allow for execute
+      file: 
+        path: /tmp/metricbeat.sh
+        mode: "u=x"
 
-  - name: 03 - Change the working directory to tmp before executing the command.
-    shell: metricbeat.sh >> metricbeatlog.txt
-    args:
-      chdir: /tmp
+    - name: 03 - Change the working directory to tmp before executing the command.
+      shell: metricbeat.sh >> metricbeatlog.txt
+      args:
+        chdir: /tmp
     
 #  - name: Install all required dependencies
 #    yum: 
