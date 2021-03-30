@@ -1,11 +1,12 @@
 ---
 - hosts: all
   become: yes
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-    
   tasks:
 
+   - name: Setting host facts for Python interpreter
+     set_fact: 
+       ansible_python_interpreter: /usr/bin/python3
+    
 #  - name: Install all required dependencies
 #    yum: 
 #      name:
