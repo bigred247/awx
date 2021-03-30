@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - include: patching/tasks/script-1.yml
+  - include: patching/tasks/script-2.yml
