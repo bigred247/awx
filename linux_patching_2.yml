@@ -4,11 +4,12 @@
   tasks:
   
   - name: 01 - Clear default repos added after kernel update and clear cache repo data
-    shell: "{{ item }}"
+    file: "{{ item }}"
     with_items: 
       - rm /etc/yum.repos.d/amzn-*.repo
       - rm /etc/yum.repos.d/epel.repo.rpmnew
       - rm /etc/yum.repos.d/epel-testing.repo
+    state: absent
     args:
       warn: no
 
