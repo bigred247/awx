@@ -1,7 +1,3 @@
----
-- hosts: all
-  become: yes
-  tasks:
   - name: 01 - Clear default repos added after kernel update and clear cache repo data
     shell: "{{ item }}"
     with_items: 
