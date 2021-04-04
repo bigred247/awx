@@ -7,6 +7,8 @@
       yum: 
         - python3.6
         - python3-pip
+      state: present
+
         
     - name: Install multi python packages with version specifiers
       pip:
