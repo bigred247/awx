@@ -2,9 +2,6 @@
 - hosts: all
   become: yes
   tasks:
-#    - name: Setting host facts for Python interpreter
-#      set_fact: 
-#        ansible_python_interpreter: "/usr/bin/python3"
 
     - name: Install or update pip
       community.general.easy_install:
@@ -33,6 +30,10 @@
       shell: metricbeat.sh >> metricbeatlog.txt
       args:
         chdir: /tmp
+        
+#    - name: Setting host facts for Python interpreter
+#      set_fact: 
+#        ansible_python_interpreter: "/usr/bin/python3"      
     
 #  - name: Install all required dependencies
 #    yum: 
