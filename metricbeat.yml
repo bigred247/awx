@@ -31,7 +31,7 @@
       args:
         chdir: /tmp
         
-    - name: Enable service httpd, and not touch the running state
+    - name: Enable service metricbeat
       service:
         name: metricbeat
         state: started
