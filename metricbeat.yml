@@ -2,10 +2,15 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Setting host facts for Python interpreter
-      set_fact: 
-        ansible_python_interpreter: "/usr/bin/python3"
-   
+#    - name: Setting host facts for Python interpreter
+#      set_fact: 
+#        ansible_python_interpreter: "/usr/bin/python3"
+    - name: Install multi python packages with version specifiers
+      pip:
+        name:
+          - botocore
+          - boto3
+ 
     - name: 01 - Download Metricbeats file locally
       aws_s3:
         bucket: mtc-temp-0001
