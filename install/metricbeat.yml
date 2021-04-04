@@ -4,11 +4,7 @@
   tasks:
 
     - name: Install or update pip
-      yum: 
-        - python36
-#        - python3-pip
-      state: present
-
+      shell: yum install python3
         
     - name: Install multi python packages with version specifiers
       pip:
