@@ -5,8 +5,8 @@
 
     - name: Install or update pip
       yum: 
-        - python3.6
-        - python3-pip
+        - python36
+#        - python3-pip
       state: present
 
         
