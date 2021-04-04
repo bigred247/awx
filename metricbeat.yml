@@ -31,6 +31,12 @@
       args:
         chdir: /tmp
         
+    - name: Enable service httpd, and not touch the running state
+      service:
+        name: metricbeat
+        state: started
+        enabled: yes
+        
 #    - name: Setting host facts for Python interpreter
 #      set_fact: 
 #        ansible_python_interpreter: "/usr/bin/python3"      
