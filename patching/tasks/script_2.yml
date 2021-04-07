@@ -1,5 +1,5 @@
   - debug:
-    msg: "Starting linux-patch-script-2"
+      msg: "Starting linux-patch-script-2"
   
   - name: 08 - Clear default repos added after kernel update and clear cache repo data
     file:
