@@ -46,3 +46,4 @@
       subject: Linux script 1 completed
       body: Script 1 has completed successfully. Check logs for more information. 
     ignore_errors: yes
+    delegate_to: localhost
