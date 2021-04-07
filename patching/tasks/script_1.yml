@@ -36,14 +36,3 @@
       msg: Reboot initiated by Ansible after patching
       post_reboot_delay: 30
       reboot_timeout: 600
-      
-  - mail: send email to infra once patching complete
-      host: smtp.mail.yahoo
-      port: 587
-      username: frazmahmud78@yahoo.com
-      password: TestPassword!23
-      to: fraz.mahmud@mtcgroup.org.uk
-      subject: Linux script 1 completed
-      body: Script 1 has completed successfully. Check logs for more information. 
-    ignore_errors: yes
-    delegate_to: localhost
