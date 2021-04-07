@@ -7,3 +7,9 @@
   tasks:
   - include: tasks/script_1.yml
   - include: tasks/script_2.yml
+  
+  - mail: send email to infra once patching complete 
+      to: infrastructureteam@mtcgroup.org.uk
+      subject: Patching comnpleted
+      body: All patching has completed successfully. Check logs for more information. 
+    ignore_errors: yes
