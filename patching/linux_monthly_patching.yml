@@ -2,7 +2,7 @@
   name: Linux monthly patching 
   hosts: all
   serial: 2
-  strategy: free #Executes tasks without waiting for all hosts to complete a specific task. If not inlcuded will only move to next task if all hosts complete task 2 for example.
+  strategy: free
   any_errors_fatal: true
   become: yes
   tasks:
