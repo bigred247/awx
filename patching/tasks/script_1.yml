@@ -1,3 +1,6 @@
+  - debug:
+    msg: "Starting linux-patch-script-1"
+  
   - name: 01 - Yum clean metadata
     command: yum clean metadata
     args:
