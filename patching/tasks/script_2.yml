@@ -41,9 +41,3 @@
     copy:
       content: "{{ postyumoutput | to_nice_yaml(indent=2) }}"
       dest: "/tmp/post-yum-update.txt"
-      
-  - mail: send email to infra once patching complete 
-      to: infrastructureteam@mtcgroup.org.uk
-      subject: Linux script 2 completed
-      body: Script 2 has completed successfully. Check logs for more information. 
-    ignore_errors: yes
