@@ -2,7 +2,6 @@
   name: Linux monthly patching 
   hosts: all
   serial: 2
-  strategy: free
   any_errors_fatal: true
   become: yes
   tasks:
