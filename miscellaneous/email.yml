@@ -41,9 +41,10 @@
   #   copy:
   #     content: "{{ yumoutput }}"
   #     dest: "/tmp/yum-update.txt"
+  
   - shell: date
-      register: date_res
-      changed_when: false
+    register: date_res
+    changed_when: false
   
   - debug:
         msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
