@@ -68,5 +68,7 @@
       to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
       subject: Ansible-report - Linux Patching Completed
       body: Linux patching completed. Please find reports attached.
-      attach: /tmp/date_res.txt /tmp/remove.txt
+      attach: 
+      - /tmp/date_res.txt 
+      - /tmp/remove.txt
     ignore_errors: yes
