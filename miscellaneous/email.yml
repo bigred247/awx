@@ -57,7 +57,6 @@
     changed_when: false
   
   - debug:
-      var: hostvars[inventory_hostname]
       msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     run_once: yes
 
