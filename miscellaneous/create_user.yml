@@ -41,5 +41,4 @@
       subject: Ansible-report - Linux Patching Completed
       body: Linux patching completed. Please find reports attached.
       attach: /tmp/yum-update.txt /tmp/yum-update.txt
-      secure: starttls
     ignore_errors: yes
