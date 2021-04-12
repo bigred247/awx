@@ -40,5 +40,5 @@
       to: Fraz <fraz.mahmud@mtcgroup.org.uk>
       subject: Ansible-report - Linux Patching Completed
       body: Linux patching completed. Please find reports attached.
-      attach: /tmp/yum-update.txt /tmp/yum-update.txt
+      attach: /tmp/yum-update.txt
     ignore_errors: yes
