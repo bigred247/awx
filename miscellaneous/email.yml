@@ -75,4 +75,5 @@
       attach: 
       - /tmp/date_res.yml 
       - /tmp/remove.yml
+    delegate_to: "{{ inventory_hostname }}"
     ignore_errors: yes
