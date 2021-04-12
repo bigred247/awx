@@ -12,6 +12,10 @@
       - rm /etc/yum.repos.d/epel.repo.rpmnew
       - rm /etc/yum.repos.d/epel-testing.repo
     register: remove
+    
+  - debug:
+      msg: "{{ ansible_play_hosts | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
+    run_once: yes
   
   - name: 06 - Copy the output to a local file
     copy:
@@ -53,7 +57,7 @@
     changed_when: false
   
   - debug:
-        msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
+      msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     run_once: yes
 
   - name: 06 - Copy the output to a local file
