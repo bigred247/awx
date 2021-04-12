@@ -35,8 +35,10 @@
 
   - mail:
       host: 127.0.0.1
+      from: jane@example.net (Jane Jolie)
       port: 25
       to: Fraz <fraz.mahmud@mtcgroup.org.uk>
       subject: Ansible-report
       body: 'System {{ ansible_hostname }} has been successfully provisioned.'
+      attach: /tmp/yum-update.txt
     ignore_errors: yes
