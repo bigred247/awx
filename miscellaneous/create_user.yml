@@ -35,9 +35,9 @@
 
   - mail:
       host: localhost
-      from: AWX Ansible (MGMT-EKS)
+      from: MGMT-EKS (AWX Ansible)
       port: 25
-      to: Fraz <fraz.mahmud@mtcgroup.org.uk>
+      to: Infrastructure Team <infrastructreteam@mtcgroup.org.uk>
       subject: Ansible-report - Linux Patching Completed
       body: Linux patching completed. Please find reports attached.
       attach: /tmp/yum-update.txt
