@@ -15,7 +15,7 @@
     
   - debug:
       msg: "{{ 'item' | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
-    with_items: {{ ansible_play_hosts }} 
+    with_items: "{{ ansible_play_hosts }}" 
     run_once: yes
   
   - name: 06 - Copy the output to a local file
@@ -59,7 +59,7 @@
   
   - debug:
       msg: "{{ 'item' | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
-    with_items: {{ ansible_play_hosts }} 
+    with_items: "{{ ansible_play_hosts }}" 
     run_once: yes
 
   - name: 06 - Copy the output to a local file
