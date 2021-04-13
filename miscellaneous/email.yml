@@ -14,7 +14,7 @@
     register: remove
     
   - debug:
-      msg: "{{ {{ item }} | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
+      msg: "{{ 'item' | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
     with_items: {{ ansible_play_hosts }} 
     run_once: yes
   
@@ -58,7 +58,7 @@
     changed_when: false
   
   - debug:
-      msg: "{{ {{ item }} | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
+      msg: "{{ 'item' | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     with_items: {{ ansible_play_hosts }} 
     run_once: yes
 
