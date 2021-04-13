@@ -22,6 +22,8 @@
       content: "{{ remove | to_nice_yaml(indent=3) }}"
       dest: "/tmp/remove.txt"
 
+  - name: Dump all variables to file
+    action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
   # - user:
   #     name: jsmith
   #     generate_ssh_key: yes
