@@ -37,6 +37,9 @@
       content: "{{ date_res | to_nice_yaml(indent=2) }}"
       dest: "/tmp/date_res.txt"
 
+  - name: Dump all variables
+    action: template src=dumpall.j2 dest=/tmp/ansible_dump.all
+
   - mail:
       host: localhost
       from: MGMT-EKS (AWX Ansible)
@@ -47,4 +50,5 @@
       attach: 
         - /tmp/date_res.txt
         - /tmp/remove.txt
+        - /tmp/ansible_dump.all
     ignore_errors: yes
