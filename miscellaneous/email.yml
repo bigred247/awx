@@ -39,7 +39,7 @@
     uri:
       url: https://awx.mtc-eng.com/api/v2/jobs/1083/stdout/
       user: test
-      password: ,Ls#9C!^#Fz9RT75
+      password: ",Ls#9C!^#Fz9RT75"
       method: GET
       return_content: yes
     register: result
