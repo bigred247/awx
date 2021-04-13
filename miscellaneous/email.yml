@@ -37,6 +37,19 @@
       content: "{{ date_res | to_nice_yaml(indent=2) }}"
       dest: "/tmp/date_res.txt"
 
+
+
+- name: Check that a page returns a status 200 and fail if the word AWESOME is not in the page contents
+  uri:
+    url: https://awx.mtc-eng.com/api/v2/jobs/1083/stdout/
+    return_content: yes
+  register: result
+
+- name: Copy the output to a local file
+    copy:
+      content: "{{ result }}"
+      dest: "/tmp/result.html"
+
   - mail:
       host: localhost
       from: MGMT-EKS (AWX Ansible)
@@ -46,4 +59,5 @@
       body: Linux patching completed. Please find reports attached.
       attach: 
         - /var/log/ansible.log
+        - /tmp/result.html
     ignore_errors: yes
