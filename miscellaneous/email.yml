@@ -14,14 +14,13 @@
     register: remove
     
   - debug:
-      msg: "{{ "item" | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
-    with_items: "{{ ansible_play_hosts }}" 
+      msg: "{{ ansible_play_hosts | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
     run_once: yes
   
   - name: 06 - Copy the output to a local file
     copy:
       content: "{{ remove | to_nice_yaml(indent=3) }}"
-      dest: "/tmp/remove.yml"
+      dest: "/tmp/remove.txt"
 
   # - user:
   #     name: jsmith
@@ -58,14 +57,13 @@
     changed_when: false
   
   - debug:
-      msg: "{{ "item" | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
-    with_items: "{{ ansible_play_hosts }}" 
+      msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     run_once: yes
 
   - name: 06 - Copy the output to a local file
     copy:
       content: "{{ date_res | to_nice_yaml(indent=3) }}"
-      dest: "/tmp/date_res.yml"
+      dest: "/tmp/date_res.txt"
 
   - mail:
       host: localhost
@@ -75,7 +73,6 @@
       subject: Ansible-report - Linux Patching Completed
       body: Linux patching completed. Please find reports attached.
       attach: 
-      - /tmp/date_res.yml 
-      - /tmp/remove.yml
-    delegate_to: "{{ inventory_hostname }}"
+        - /tmp/date_res.txt
+        - /tmp/remove.txt
     ignore_errors: yes
