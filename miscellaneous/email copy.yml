@@ -17,12 +17,40 @@
       msg: "{{ ansible_play_hosts | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
     run_once: yes
   
-  - name: Copy the output to a local file
+  - name: 06 - Copy the output to a local file
     copy:
       content: "{{ remove | to_nice_yaml(indent=3) }}"
       dest: "/tmp/remove.txt"
 
+  # - user:
+  #     name: jsmith
+  #     generate_ssh_key: yes
+  #     ssh_key_bits: 2048
+  #     ssh_key_file: .ssh/jsmith_rsa
 
+  # - name: 04 - Run yum update and output details
+  #   yum:
+  #     name: '*'
+  #     state: latest
+  #   register: yumoutput
+    
+  # - debug:
+  #     msg: "{{ ansible_play_hosts | map('extract', hostvars, 'yumoutput') | map(attribute='stdout_lines') | list }}"
+  #   run_once: yes 
+
+  # - name: 05 - Show registered var contents and structure
+  #   debug:
+  #     var: yumoutput
+
+  # - name: 06 - Copy the output to a local file
+  #   copy:
+  #     content: "{{ yumoutput | to_nice_yaml(indent=2) }}"
+  #     dest: "/tmp/yum-update.txt"
+
+  # - name: 06 - Copy the output to a local file
+  #   copy:
+  #     content: "{{ yumoutput }}"
+  #     dest: "/tmp/yum-update.txt"
 
   - shell: date
     register: date_res
@@ -32,7 +60,7 @@
       msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     run_once: yes
 
-  - name: Copy the output to a local file
+  - name: 06 - Copy the output to a local file
     copy:
       content: "{{ date_res | to_nice_yaml(indent=3) }}"
       dest: "/tmp/date_res.txt"
