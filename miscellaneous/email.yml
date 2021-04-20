@@ -37,7 +37,7 @@
 
   - name: Check that a page returns a status 200 and fail if the word AWESOME is not in the page contents
     uri:
-      url: https://awx.mtc-eng.com/api/v2/jobs/1083/stdout/
+      url: https://awx.mtc-eng.com/api/v2/jobs/{{ tower_job_id }}/stdout/
       user: test
       password: Fz9RT75
       method: GET
