@@ -1,7 +1,6 @@
 ---
 - hosts: all
   become: yes
-  log_path: /tmp/play.html
   tasks:
   
   - name: 01 - Clear default repos added after kernel update and clear cache repo data
