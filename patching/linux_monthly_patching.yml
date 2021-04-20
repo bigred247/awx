@@ -15,10 +15,11 @@
       subject: '{{ tags.Name }}'
       body: Patching completed. Please find reports attached.
       attach: 
-        - /home/ec2-user/yum-Installed-pre.txt
-        - /home/ec2-user/$HOSTNAME-yum-install.txt
-        - /home/ec2-user/yum-update.txt
-        - /home/ec2-user/yum-Installed-post.txt
-        - /home/ec2-user/$HOSTNAME-yum-install.txt
-        - /home/ec2-user/post-yum-update.txt
+        - /tmp/yum-Installed-pre.txt
+        - /tmp/$HOSTNAME-yum-install.txt
+        - /tmp/yum-update.txt
+        - /tmp/yum-Installed-post.txt
+        - /tmp/$HOSTNAME-yum-install.txt
+        - /tmp/post-yum-update.txt
     ignore_errors: yes
+    delegate_to: localhost
