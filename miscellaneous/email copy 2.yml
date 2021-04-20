@@ -2,10 +2,6 @@
 - hosts: all
   become: yes
   tasks:
-  
-- name: show output parameters from the tower job
-  debug: msg="{{ item.inventory_hostname }} {{ item.ansible_host }}"
-  loop: "{{ values }}"
 
   - mail:
       host: localhost
@@ -14,8 +10,6 @@
       to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
       subject: {{ ansible_hostname }} - Linux Patching Report
       body: Linux patching completed. Please find reports attached.
-      attach: 
-        - /tmp/remove.txt
+      # attach: 
+      #   - /tmp/remove.txt
     ignore_errors: yes
-
-   
