@@ -8,7 +8,7 @@
       from: MGMT-EKS (AWX Ansible)
       port: 25
       to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
-      subject: System {{ ansible_hostname }} Linux Patching Report
+      subject: System {{ tags.Name }} Linux Patching Report
       body: Linux patching completed. Please find reports attached.
       # attach: 
       #   - /tmp/remove.txt
