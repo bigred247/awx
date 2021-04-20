@@ -1,15 +1,16 @@
 ---
 - hosts: all
   become: yes
+  log_plays: /tmp/play_result.html
   tasks:
 
   - mail:
       host: localhost
-      from: MGMT-EKS (AWX Ansible)
+      from: MGMT-EKS (AWX Ansible Patching Report)
       port: 25
       to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
-      subject: System {{ tags.Name }} Linux Patching Report
-      body: Linux patching completed. Please find reports attached.
-      # attach: 
-      #   - /tmp/remove.txt
+      subject: '{{ tags.Name }}'
+      body: Patching completed. Please find reports attached.
+      attach: 
+        - /tmp/play_result.html
     ignore_errors: yes
