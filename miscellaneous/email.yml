@@ -35,9 +35,9 @@
       content: "{{ date_res | to_nice_yaml(indent=2) }}"
       dest: "/tmp/date_res.txt"
 
-  - name: Check that a page returns a status 200 and fail if the word AWESOME is not in the page contents
+  - name: Check that a page returns a status 200
     uri:
-      url: https://awx.mtc-eng.com/api/v2/jobs/{{ tower_job_id }}/stdout/
+      url: https://awx.mtc-eng.com/api/v2/jobs/1226-test/stdout/
       user: test
       password: Fz9RT75
       method: GET
