@@ -16,6 +16,7 @@
   - debug:
       msg: "{{ ansible_play_hosts | map('extract', hostvars, 'remove') | map(attribute='stdout') | list }}"
     run_once: true
+    delegate_to: localhost
   
   - name: Copy the output to a local file
     copy:
@@ -29,11 +30,14 @@
   - debug:
       msg: "{{ ansible_play_hosts | map('extract', hostvars, 'date_res') | map(attribute='stdout') | list }}"
     run_once: true
+    delegate_to: localhost
+
 
   - name: Copy the output to a local file
     copy:
       content: "{{ date_res | to_nice_yaml(indent=2) }}"
       dest: "/tmp/date_res.txt"
+    
 
   # - name: Check that a page returns a status 200
   #   uri:
