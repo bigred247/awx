@@ -1,7 +1,6 @@
 ---
 - hosts: all
   become: yes
-  log_path: /tmp/play.html
   tasks:
   
   - name: 01 - Clear default repos added after kernel update and clear cache repo data
@@ -56,7 +55,7 @@
       from: MGMT-EKS (AWX Ansible)
       port: 25
       to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
-      subject: Ansible-report - Linux Patching Completed
+      subject: {{ ansible_hostname }} - Linux Patching Report
       body: Linux patching completed. Please find reports attached.
       attach: 
         - /tmp/date_res.txt
