@@ -18,7 +18,7 @@
         - /tmp/{{ tag.Name }}-yum-install.txt
         - /tmp/yum-update.txt
         - /tmp/yum-Installed-post.txt
-        - /tmp/{{ tag.Name }}-yum-install.txt
+        - /tmp/{{ tags.Name }}-yum-install.txt
         - /tmp/post-yum-update.txt
     ignore_errors: yes
     delegate_to: localhost
