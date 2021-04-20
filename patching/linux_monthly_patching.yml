@@ -7,3 +7,18 @@
   tasks:
   - include: tasks/script_1.yml
   - include: tasks/script_2.yml
+  - mail:
+      host: localhost
+      from: MGMT-EKS (AWX Ansible Patching Report)
+      port: 25
+      to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
+      subject: '{{ tags.Name }}'
+      body: Patching completed. Please find reports attached.
+      attach: 
+        - /home/ec2-user/yum-Installed-pre.txt
+        - /home/ec2-user/$HOSTNAME-yum-install.txt
+        - /home/ec2-user/yum-update.txt
+        - /home/ec2-user/yum-Installed-post.txt
+        - /home/ec2-user/$HOSTNAME-yum-install.txt
+        - /home/ec2-user/post-yum-update.txt
+    ignore_errors: yes
