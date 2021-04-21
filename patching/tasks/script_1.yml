@@ -5,8 +5,8 @@
       path: /var/log/ansible-templates
       state: directory
       mode: 0755
-    roles:
-      - {role: ec2, sudo: yes}
+      roles:
+        - {role: ec2, sudo: yes}
 
   - name: 01 - Yum clean metadata
     command: yum clean metadata
