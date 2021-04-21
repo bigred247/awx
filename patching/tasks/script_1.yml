@@ -5,6 +5,8 @@
     command: mkdir /var/log/ansible-templates
     become: yes
     become_method: su
+    become_user: ec2-user
+
 
   - name: 01 - Yum clean metadata
     command: yum clean metadata
