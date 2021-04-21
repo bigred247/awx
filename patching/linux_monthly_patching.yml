@@ -15,9 +15,9 @@
       body: Patching completed. Please find reports attached.
       attach: 
         - /var/log/ansible-templates/yum-Installed-pre.txt
-        - /var/log/ansible-templates/{{ tags.Name }}-yum-install.txt
+        - /var/log/ansible-templates/{{ private_dns_name }}-yum-install.txt
         - /var/log/ansible-templates/yum-update.txt
         - /var/log/ansible-templates/yum-Installed-post.txt
-        - /var/log/ansible-templates/{{ tags.Name }}-post-yum-install.txt
+        - /var/log/ansible-templates/{{ private_dns_name }}-post-yum-install.txt
         - /var/log/ansible-templates/post-yum-update.txt
     ignore_errors: yes
