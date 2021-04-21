@@ -2,7 +2,7 @@
       msg: "Starting linux-patch-script-1"
 
   - name: create a logs directory for ansible
-    command: rm -rf /var/log/ansible-templates && mkdir /var/log/ansible-templates
+    shell: rm -rf /var/log/ansible-templates && mkdir /var/log/ansible-templates
     become: yes
     become_method: su
     become_exe: "sudo su -"
@@ -14,8 +14,6 @@
 
   - name: 02 - Old CF output file for same of handover
     shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /var/log/ansible-templates/yum-Installed-pre.txt
-    args:
-      warn: no
 
   - name: 03 - Set variable to number of installed packages and available updates
     shell: "{{ item }}"
