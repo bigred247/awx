@@ -3,9 +3,9 @@
   
   # create a directory if it doesn't exist
   - file:
-    path: /var/log/awx-templates
-    state: directory
-    mode: 0755
+      path: /var/log/awx-templates
+      state: directory
+      mode: 0755
   
   - name: 01 - Yum clean metadata
     command: yum clean metadata
