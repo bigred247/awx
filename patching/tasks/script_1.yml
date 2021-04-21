@@ -14,7 +14,8 @@
 
   - name: 02 - Old CF output file for same of handover
     shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /var/log/ansible-templates/yum-Installed-pre.txt
-
+    warn: false
+    
   - name: 03 - Set variable to number of installed packages and available updates
     shell: "{{ item }}"
     with_items: 
