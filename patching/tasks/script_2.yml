@@ -16,7 +16,7 @@
       warn: no
 
   - name: 10 - Post Yum check
-    shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /home/yum-Installed-post.txt
+    shell: rpm -qa --queryformat "%{NAME};%{VERSION}-%{RELEASE}\n" | sort -t\; -k 1 > /var/log/ansible-templates/yum-Installed-post.txt
 
   - name: 11 Set variable to number of installed packages and available updates
     shell: "{{ item }}"
@@ -25,7 +25,7 @@
       - export post_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
 
   - name: 12 - Output to new file type
-    shell: echo -n "${post_pkg_inst};${post_pkg_avail}" >> /home/$HOSTNAME-yum-install.txt
+    shell: echo -n "${post_pkg_inst};${post_pkg_avail}" >> /var/log/ansible-templates/$HOSTNAME-yum-install.txt
 
   - name: 13 - Confirm no updates outstanding
     yum:
@@ -40,4 +40,4 @@
   - name: 15 - Copy the output to a local file
     copy:
       content: "{{ postyumoutput | to_nice_yaml(indent=2) }}"
-      dest: "/home/post-yum-update.txt"
+      dest: "/var/log/ansible-templates/post-yum-update.txt"

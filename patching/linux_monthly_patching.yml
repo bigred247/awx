@@ -14,10 +14,10 @@
       subject: '{{ tags.Name }}'
       body: Patching completed. Please find reports attached.
       attach: 
-        - /home/yum-Installed-pre.txt
-        - /home/{{ tags.Name }}-yum-install.txt
-        - /home/yum-update.txt
-        - /home/yum-Installed-post.txt
-        - /home/{{ tags.Name }}-yum-install.txt
-        - /home/post-yum-update.txt
+        - /var/log/ansible-templates/yum-Installed-pre.txt
+        - /var/log/ansible-templates/{{ tags.Name }}-yum-install.txt
+        - /var/log/ansible-templates/yum-update.txt
+        - /var/log/ansible-templates/yum-Installed-post.txt
+        - /var/log/ansible-templates/{{ tags.Name }}-yum-install.txt
+        - /var/log/ansible-templates/post-yum-update.txt
     ignore_errors: yes
