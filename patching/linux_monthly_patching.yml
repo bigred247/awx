@@ -21,4 +21,3 @@
         - /var/log/awx-templates/{{ tags.Name }}-yum-install.txt
         - /var/log/awx-templates/post-yum-update.txt
     ignore_errors: yes
-    #delegate_to: localhost
