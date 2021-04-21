@@ -2,7 +2,9 @@
       msg: "Starting linux-patch-script-1"
 
   - name: create a logs directory for ansible
-    command: sudo su - && mkdir /var/log/ansible-templates
+    command: mkdir /var/log/ansible-templates
+    become: yes
+    become_method: su
 
   - name: 01 - Yum clean metadata
     command: yum clean metadata
