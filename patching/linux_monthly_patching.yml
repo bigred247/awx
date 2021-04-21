@@ -14,10 +14,10 @@
       subject: '{{ tags.Name }}'
       body: Patching completed. Please find reports attached.
       attach: 
-        - /var/log/awx-templates/yum-Installed-pre.txt
-        - /var/log/awx-templates/{{ tags.Name }}-yum-install.txt
-        - /var/log/awx-templates/yum-update.txt
-        - /var/log/awx-templates/yum-Installed-post.txt
-        - /var/log/awx-templates/{{ tags.Name }}-yum-install.txt
-        - /var/log/awx-templates/post-yum-update.txt
+        - /home/yum-Installed-pre.txt
+        - /home/{{ tags.Name }}-yum-install.txt
+        - /home/yum-update.txt
+        - /home/yum-Installed-post.txt
+        - /home/{{ tags.Name }}-yum-install.txt
+        - /home/post-yum-update.txt
     ignore_errors: yes
