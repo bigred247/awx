@@ -10,8 +10,8 @@
       host: localhost
       from: MGMT-EKS (AWX Ansible Patching Report)
       port: 25
-      to: Infrastructure Team <fraz.mahmud@mtcgroup.org.uk>
-      subject: '{{ tags.Name }}'
+      to: Infrastructure Team <infrastructureteam@mtcgroup.org.uk>
+      subject: '{{ tags.Name }}' '{{ private_ip_address }}'
       body: Patching completed. Please find reports attached.
       attach: 
         - /var/log/ansible-templates/yum-Installed-pre.txt
