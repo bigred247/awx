@@ -1,12 +1,8 @@
   - debug:
       msg: "Starting linux-patch-script-1"
 
-  - file:
-      path: /var/log/ansible-templates
-      state: directory
-      mode: 0755
-      roles:
-        - {role: ec2, sudo: yes}
+  - name: create a logs directory for ansible
+    command: sudo su - && mkdir /var/log/ansible-templates
 
   - name: 01 - Yum clean metadata
     command: yum clean metadata
