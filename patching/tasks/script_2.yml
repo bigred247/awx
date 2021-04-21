@@ -25,7 +25,7 @@
       - export post_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
 
   - name: 12 - Output to new file type
-    shell: echo -n "${post_pkg_inst};${post_pkg_avail}" >> /var/log/ansible-templates/$HOSTNAME-yum-install.txt
+    shell: echo -n "${post_pkg_inst};${post_pkg_avail}" >> /var/log/ansible-templates/$HOSTNAME-post-yum-install.txt
 
   - name: 13 - Confirm no updates outstanding
     yum:

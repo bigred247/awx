@@ -18,6 +18,6 @@
         - /var/log/ansible-templates/{{ tags.Name }}-yum-install.txt
         - /var/log/ansible-templates/yum-update.txt
         - /var/log/ansible-templates/yum-Installed-post.txt
-        - /var/log/ansible-templates/{{ tags.Name }}-yum-install.txt
+        - /var/log/ansible-templates/{{ tags.Name }}-post-yum-install.txt
         - /var/log/ansible-templates/post-yum-update.txt
     ignore_errors: yes
