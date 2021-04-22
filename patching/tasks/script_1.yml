@@ -22,24 +22,38 @@
       - export pre_pkg_avail=$(yum check-update --quiet | grep '^[a-Z0-9]' | wc -l)
       - echo -n "${HOSTNAME};${pre_pkg_inst};${pre_pkg_avail};" > /var/log/ansible-templates/$HOSTNAME-yum-install.txt
 
-  - name: 04 - Run yum update and output details
-    yum:
-      name: '*'
-      state: latest
-    register: yumoutput
+  # - name: 04 - Run yum update and output details
+  #   yum:
+  #     name: '*'
+  #     state: latest
+  #   register: yumoutput
     
-  - name: 05 - Show registered var contents and structure
-    debug:
-      var: yumoutput
+  # - name: 05 - Show registered var contents and structure
+  #   debug:
+  #     var: yumoutput
 
-  - name: 06 - Copy the output to a local file
-    copy:
-      content: "{{ yumoutput | to_nice_yaml(indent=2) }}"
-      dest: "/var/log/ansible-templates/yum-update.txt"
+  # - name: 06 - Copy the output to a local file
+  #   copy:
+  #     content: "{{ yumoutput | to_nice_yaml(indent=2) }}"
+  #     dest: "/var/log/ansible-templates/yum-update.txt"
+
+  # - name: 07 - Reboot machine after update
+  #   reboot:
+  #     msg: Reboot initiated by Ansible after patching
+  #     post_reboot_delay: 30
+  #     reboot_timeout: 600
+  #   when: yumoutput.changed
+
+  - name: Run yum update and output details
+    shell: yum -y update > /var/log/ansible-templates/yum-update.txt
+    become: yes
+    become_method: su
+    become_exe: "sudo su -"
+    register: result
 
   - name: 07 - Reboot machine after update
     reboot:
       msg: Reboot initiated by Ansible after patching
       post_reboot_delay: 30
       reboot_timeout: 600
-    when: yumoutput.changed
+    when: result.changed
