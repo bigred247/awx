@@ -46,7 +46,7 @@
 
   - name: Run yum update and output details
     shell: yum -y update > /var/log/ansible-templates/yum-update.txt
-    register: result
+    register: yumresult
     become: yes
     become_method: su
     become_exe: "sudo su -"
@@ -56,6 +56,6 @@
       msg: Reboot initiated by Ansible after patching
       post_reboot_delay: 30
       reboot_timeout: 600
-    when: result.changed
+    when: yumresult.changed
 
     ##;
