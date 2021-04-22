@@ -46,10 +46,10 @@
 
   - name: Run yum update and output details
     shell: yum -y update > /var/log/ansible-templates/yum-update.txt
+    register: result
     become: yes
     become_method: su
     become_exe: "sudo su -"
-    register: result
 
   - name: 07 - Reboot machine after update
     reboot:
