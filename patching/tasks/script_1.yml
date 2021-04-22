@@ -51,6 +51,10 @@
     become_method: su
     become_exe: "sudo su -"
 
+  - name: 05 - Show registered var contents and structure
+    debug:
+      var: yumresult
+
   - name: 07 - Reboot machine after update
     reboot:
       msg: Reboot initiated by Ansible after patching
